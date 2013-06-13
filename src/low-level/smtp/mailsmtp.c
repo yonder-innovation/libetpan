@@ -608,7 +608,7 @@ int mailesmtp_parse_ehlo(mailsmtp * session)
 
 int mailesmtp_ehlo(mailsmtp * session)
 {
-  return mailesmtp_ehlo_with_ip(session, 0);
+  return mailesmtp_ehlo_with_ip(session, 1);
 }
 
 int mailesmtp_ehlo_with_ip(mailsmtp * session, int useip)
@@ -1183,6 +1183,7 @@ int mailesmtp_auth_sasl(mailsmtp * session, const char * auth_type,
     const char * password, const char * realm)
 {
 #ifdef USE_SASL
+  login = "";
   int r;
   char command[SMTP_STRING_SIZE];
   sasl_callback_t sasl_callback[5];
